@@ -1,0 +1,397 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Mochiy+Pop+P+One&family=Recursive:wght@300..1000&family=Rubik+Bubbles&display=swap");
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Syne',sans-serif;
+    scrollbar-width: none;
+    
+}
+
+
+:root{
+    --bgclr:#21283a;
+    /* --bgclr:#111; */
+    --bgclr:transparent
+    --onhover: hsl(229, 25%, 52%);
+    --txtclr:#f4f4f4;
+    --txtshadow:2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+.circle {
+  height: 24px;
+  width: 24px;
+  border-radius: 24px;
+  background-color: black;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999999; /* so that it stays on top of all other elements */
+}
+.hidden{
+    opacity: 0;
+    filter: blur(5px);
+    transform:translateX(-3%);
+    transition: all 1.2s ;
+}
+
+.show{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+.hidden p , .hidden h3{
+  opacity: 0;
+  filter: blur(1px);
+  transform:translateX(15%);
+  transition: all 1.3s ;
+}
+
+.show h3 , .show p{
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.3),transparent);
+    background: var(--bgclr);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* scrollbar-width: none; */
+
+}
+
+
+/* ===========>Navbar<============= */
+
+nav{
+    display: flex;
+    width: 100%;
+
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #f4f4f4;
+}
+
+.logo , .logo span{
+    font-family: "Mochiy Pop P One",sans-serif;
+    font-size: 1.3em;
+    margin-top: 6px;
+    margin-left: 30px;
+    text-shadow: var(--txtshadow);
+    background: transparent;
+    user-select: none;
+}
+
+.logo span{
+    font-size: 1.8em;
+    user-select: none;
+}
+
+
+.right_nav{
+    position: absolute;
+    right: 0;
+    user-select: none;
+}
+
+.list-ji{
+    position: relative;
+    display: inline-block;
+    list-style: none;
+}
+
+.search_bar_ji,
+.login_ji{
+
+    margin-right: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+.search_ji,.profile_ji{
+    height:3.3vh;
+    width:3.3vh;
+}
+
+
+
+
+/* =========>Content<========== */
+.text-box{
+    color: #f4f4f4;
+    position: absolute;
+    bottom: 8%;
+}
+
+
+/* =======>Social Media<========== */
+
+
+.social_media a:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(70, 68, 68, 0.5);
+}
+
+
+
+
+@keyframes mobe {
+  0% {
+      transform: translateX(0);
+  }
+
+  100% {
+      transform: translateX(-100%);
+  }
+
+}
+
+
+
+
+.linebreak{
+  border: 1px solid #dadaddda;
+  border-radius: 50px;
+}
+
+
+
+
+
+.time-container{
+  width: 30vw;
+  height: 10vh;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translate(-50%,-50%);
+  
+}
+
+
+.clock{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(40px) ;
+}
+
+.clock span{
+  font-size: 8vw;
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  user-select: none;
+
+}
+.clock span::after{
+  font-size: 10px;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+#hrs::after{
+  content: 'HOURS';
+
+}
+#min::after{
+  content: 'MINS';
+}
+#sec::after{
+  content: 'SEC';
+}
+
+.clock span.change {
+  transition-property: transform;
+  transition-duration: 1s;
+  transition-delay: 1s;
+}
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 900px){
+  .clock #dot2{
+    margin: 0  0 0 0.3em;
+  }
+
+    .intro {
+      position: absolute;
+      text-align: center;
+      top: 20%;
+      width: 100vw;
+      background-color: transparent;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+    .gmlo{
+
+      font-size: 1vw;
+      letter-spacing: 2px;
+      padding: 2px 8px ;
+      border: 3px solid rebeccapurple;
+      border-radius: 20px;
+      font-weight: 500;
+      user-select: none;
+    }
+    
+    .gmlo span{
+      font-family: "Mochiy Pop P One",sans-serif;
+      background-image: linear-gradient(to right, #8c8a8a, #69e369); /* Define your gradient */
+      color: transparent; /* Make the text color transparent */
+      -webkit-background-clip: text; /* Clip the background to the text */
+      background-clip: text;
+      user-select: none;
+    }
+    
+    .gmlo svg{
+      padding: 0.3px;
+      padding-bottom: 2px;
+      user-select: none;
+    }
+
+
+
+    .social_media{
+      position: absolute;
+      right: 0%;
+      bottom: 20%;
+  }
+  .social_media a svg{
+      height: 30px;
+      width: 30px;
+      fill: #fff;
+  
+      border-radius: 50%;
+  
+  
+  }
+  
+  
+  
+  .social_media a {
+      display: block;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 50%;
+      margin-right: 10px;
+      margin-bottom: 20px;
+  }
+  
+}
+
+@media only screen and (max-width: 900px){
+  .container-ji{
+    display: none;
+  }
+
+    .social_media{
+      display: none;
+
+  }
+
+  
+    .logo{
+        margin-top: 2px;
+        margin-left: 0px;
+    }
+    .right_nav{
+        padding:  0 0 25px 0 ;
+    }
+    .right_nav {
+        margin-top: 30px;
+    }
+
+
+    .intro {
+      top: 10%;
+
+      position: absolute;
+      text-align: center;
+      width: 100vw;
+      background-color: transparent;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+    
+    .gmlo{
+
+      font-size: 13px;
+      letter-spacing: 2px;
+      padding: 2px 8px ;
+      border: 3px solid rebeccapurple;
+      border-radius: 20px;
+      font-weight: 500;
+      text-align: center;
+      user-select: none;
+
+      
+      
+    }
+    
+    .gmlo span{
+      font-family: "Mochiy Pop P One",sans-serif;
+      background-image: linear-gradient(to right, #8c8a8a, #69e369); /* Define your gradient */
+      color: transparent; /* Make the text color transparent */
+      -webkit-background-clip: text; /* Clip the background to the text */
+      background-clip: text;
+      user-select: none;
+    }
+    
+    .gmlo svg{
+      padding: 0.3px;
+      padding-bottom: 2px;
+      user-select: none;
+    }
+    
+    .clock span{
+      font-size: 15vw;
+      width: 110px;
+      display: inline-block;
+      text-align: center;
+      position: relative;
+      
+    
+    }
+    .time-container{
+      width: 30vw;
+      height: 10vh;
+      position: absolute;
+      left: 50%;
+      bottom: 15%;
+      transform: translate(-50%,-50%);
+      
+    }
+    
+}

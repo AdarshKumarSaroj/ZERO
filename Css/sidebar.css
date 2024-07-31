@@ -1,0 +1,307 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    fill: #fff;
+    color: #fff;
+}
+
+:root{
+    --clr: #21283a;
+}
+ 
+
+
+
+.navigation{
+    
+    width: 70px;
+    height: 500px;
+    background: transparent;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.3rem;
+    
+}
+
+.navigation ul{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 350px;
+
+}
+
+.navigation ul li{
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+
+}
+
+.navigation ul li a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-size: 500;
+
+}
+
+.navigation ul li a .icon{
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5em;
+    text-align: center;
+    transition: 0.5s;
+    color: var(--clr);
+
+
+}
+
+.navigation ul li.active a .icon{
+    transform: translateX(32px);  /* if you chnge it to x the animation easing to right or left and +for down and -for up */
+
+
+}
+
+.navigation ul li:hover a .icon{
+    transform: translateX(32px);  /* if you chnge it to x the animation easing to right or left and +for down and -for up */
+
+
+}
+.navigation ul li a .text{
+    position: absolute;
+    color: var(--clr);
+    font-weight: 400;
+    font-size: 0;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    transform:  translateY(20px);
+
+}
+
+.navigation ul li.active a .text{
+    opacity: 1;
+    transform:  translate(10px);
+
+}
+.navigation ul li:hover a .text{
+    opacity: 1;
+    transform:  translate(10px);
+
+}
+.navigation ul li.active a .text{
+    opacity: 1;
+    transform:  translate(10px);
+
+}
+.navigation ul li:hover a .text{
+    opacity: 1;
+    transform:  translate(10px);
+
+}
+
+.indicator{
+    position: absolute;
+    top: 73.5px;
+    right: -50%;
+    width: 80px;
+    height: 80px;
+    transition: 0.5s;
+    opacity: 0;
+
+}
+#gradient {
+    /* For WebKit (Safari, Chrome, etc.) */
+    background: -webkit-linear-gradient(rgba(76, 161, 175, 1), rgba(196, 224, 229, 1));
+    /* For Mozilla Firefox */
+    background: -moz-linear-gradient(rgba(76, 161, 175, 1), rgba(196, 224, 229, 1));
+    /* For Internet Explorer 10 and above */
+    background: -ms-linear-gradient(rgba(76, 161, 175, 1), rgba(196, 224, 229, 1));
+    /* For Opera */
+    background: -o-linear-gradient(rgba(76, 161, 175, 1), rgba(196, 224, 229, 1));
+    /* Standard syntax */
+    background: linear-gradient(rgba(76, 161, 175, 1), rgba(196, 224, 229, 1));
+}
+.indicator svg path{
+    fill: url(#gradient);
+}
+
+
+
+
+
+
+.navigation ul li:nth-child(1).active ~ .indicator{
+    transform: translateY(calc(60px * 0));
+    opacity: 1;
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator{
+    transform: translateY(calc(70px * 1));
+    opacity: 1;
+}
+.navigation ul li:nth-child(3).active ~ .indicator{
+    transform: translateY(calc(70px * 2));
+    opacity: 1;
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator{
+    transform: translateY(calc(70px * 3));
+    opacity: 1;
+}
+.navigation ul li:nth-child(5).active ~ .indicator{
+    transform: translateY(calc(70px * 4));
+    opacity: 1;
+}
+.navigation ul li:nth-child(1):hover ~ .indicator{
+    transform: translateY(calc(60px * 0));
+    opacity: 1;
+}
+
+.navigation ul li:nth-child(2):hover ~ .indicator{
+    transform: translateY(calc(70px * 1));
+    opacity: 1;
+}
+.navigation ul li:nth-child(3):hover ~ .indicator{
+    transform: translateY(calc(70px * 2));
+    opacity: 1;
+}
+
+.navigation ul li:nth-child(4):hover ~ .indicator{
+    transform: translateY(calc(70px * 3));
+    opacity: 1;
+}
+.navigation ul li:nth-child(5):hover ~ .indicator{
+    transform: translateY(calc(70px * 4));
+    opacity: 1;
+}
+
+
+
+.sidebar{
+    position: absolute;
+    left: -1em;
+    bottom: 6em;
+
+}
+
+/*
+@media only screen and (max-width: 900px){
+    
+    .navigation{
+    
+        width: 400px;
+        height: 70px;
+        background: transparent;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1.3rem;
+        
+    }
+
+    .navigation ul{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 350px;
+    
+    }
+    
+
+    .navigation ul li.active a .icon{
+        transform: translateY(-32px);  
+    
+    
+    }
+    
+    .navigation ul li:hover a .icon{
+        transform: translateY(-32px);  
+    
+    
+    }
+    .navigation ul li:nth-child(1).active ~ .indicator{
+        transform: translateX(calc(60px * 0));
+        opacity: 1;
+    }
+    
+    .navigation ul li:nth-child(2).active ~ .indicator{
+        transform: translateX(calc(70px * 1));
+        opacity: 1;
+    }
+    .navigation ul li:nth-child(3).active ~ .indicator{
+        transform: translateX(calc(70px * 2));
+        opacity: 1;
+    }
+    
+    .navigation ul li:nth-child(4).active ~ .indicator{
+        transform: translateX(calc(70px * 3));
+        opacity: 1;
+    }
+    .navigation ul li:nth-child(5).active ~ .indicator{
+        transform: translateX(calc(70px * 4));
+        opacity: 1;
+    }
+    .navigation ul li:nth-child(1):hover ~ .indicator{
+        transform: translateX(calc(60px * 0));
+        opacity: 1;
+    }
+    
+    .navigation ul li:nth-child(2):hover ~ .indicator{
+        transform: translateX(calc(70px * 1));
+        opacity: 1;
+    }
+    .navigation ul li:nth-child(3):hover ~ .indicator{
+        transform: translateX(calc(70px * 2));
+        opacity: 1;
+    }
+    
+    .navigation ul li:nth-child(4):hover ~ .indicator{
+        transform: translateX(calc(70px * 3));
+        opacity: 1;
+    }
+    .navigation ul li:nth-child(5):hover ~ .indicator{
+        transform: translateX(calc(70px * 4));
+        opacity: 1;
+    }
+    
+    .indicator{
+        position: absolute;
+        top: -50%;
+        left: 4%;
+        width: 80px;
+        height: 80px;
+        transition: 0.5s;
+        opacity: 0;
+    
+    }
+    
+    .sidebar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        text-align: center;
+        width: 100%;
+        bottom: 0;
+
+}
+
+}
+
+*/
+

@@ -1,0 +1,461 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Syne", sans-serif;
+  color: #ffffff;
+  resize: none;
+}
+
+
+
+section{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 0px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw; /* This ensures the chat input is centered vertically */
+  padding-top: 30px ;
+
+
+}
+
+
+
+#send-button{
+  width: 20px;
+}
+
+.user-input{
+  flex-grow: 1;
+  font-size: 1.2rem;
+  padding: 0 0.5rem;
+  border: 0;
+  background: transparent;
+  resize: none;
+  height: 40px;
+}
+
+.submit{
+  font-size: 1rem;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  margin:4px 9px 0 0 ;
+  color: antiquewhite;
+} 
+
+.user-input:focus{
+  outline: 0;
+}
+
+.chat-input textarea{
+  padding: 8px 0 0 20px ;
+}
+
+.chat-input{
+  background-color:#21283a;
+}
+
+
+.body span{
+  color: #ffffff;
+}
+
+section{
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background-color: #21283a;
+  opacity: 0.7;
+  overflow: hidden;
+}
+
+body{
+  background-color: #21283a;
+}
+
+
+.body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  font-size: 10em;
+}
+
+.logo {
+  font-size: 1em;
+  color: #fff;
+  letter-spacing: 4px;
+  border: 15px solid rgb(26, 29, 29);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 80px;
+  padding: 2px 50px;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 1), 0 0 15px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 255, 255, 1), 0 0 50px rgba(0, 255, 255, 1), 0 0 75px rgba(0, 255, 255, 1);
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 70px #0ff, 0 0 80px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
+}
+
+
+
+.chat-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  scrollbar-width:none;
+  scroll-behavior: smooth;
+  transition: scroll-behavior 0.3s;
+}
+
+
+
+/* =========================Laptop========================== */
+
+@media (min-width: 769px) {
+
+  .chat-input{
+    border: 2px solid #ffffff;
+    display: flex;
+    border-radius: 30px ;
+    width: 40vw;
+    justify-content: center;
+    text-align: center;
+    bottom: 15px;
+    position: fixed; 
+    margin: 0 auto; 
+    left: 50%; 
+    transform: translateX(-50%);
+    
+  }
+
+  .chatbox{
+    width: 80vw;
+  }
+
+  .margin{
+    margin-bottom: 70px;
+  }
+}
+
+
+
+
+
+
+/* <=======================Mobile===============================> */
+@media (max-width: 950px) {
+  .chat-input {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 30px ;
+    border: 2px solid #ffffff;
+    width: 90vw;
+    bottom: 10px;
+    position: fixed;
+    margin: 0;
+    left: 50%; 
+    transform: translateX(-50%);
+    
+  }
+
+  .body > div {
+    font-size: 0.5em;
+    color: #fff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 9px solid rgb(94, 109, 109);
+    border-radius: 80px;
+    padding: 2px 50px;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 1), 0 0 15px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 255, 255, 1), 0 0 50px rgba(0, 255, 255, 1), 0 0 75px rgba(0, 255, 255, 1);
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 70px #0ff, 0 0 80px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
+  }
+
+  .chatbox{
+    width: 96vw;
+  }
+  .margin{
+    margin-bottom: 60px;
+  }
+
+}
+
+.user-input{
+  scrollbar-width: none;
+}
+
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.user-prompt{
+
+  background-color: #060606;
+  padding: 10px;
+  border-radius: 10px;
+  align-self: flex-start;
+  max-width: 70%;
+  margin-bottom: 10px;
+  
+}
+
+.assistant-answer{
+
+  background-color: #000000;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  align-self: flex-end;
+  max-width: 70%;
+  display: inline-block;
+}
+
+.capture{
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  bottom: 0px;
+  box-shadow: 0 -20px 20px 5px #21283a;
+}
+
+.cloud{
+  background-color: #21283a;
+  width: 100%;
+  height: 100em;
+}
+
+
+/* =============Working on assistant code blocks =================== */
+
+
+.insidecode{
+  border: 0.1px solid #0ff;
+  border-radius: 1em;
+  margin: 15px 0 15px 0;
+}
+
+
+.interpreter-copy{
+  border: 1em;
+  border-top-left-radius: 1.5em;
+  border-top-right-radius: 1.5em;
+}
+
+.copy svg{
+  border-radius: 40%;
+}
+
+.copy {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.insidecode pre{
+  opacity: 1;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+}
+
+.interpreter-copy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #16120e !important;
+  opacity: 1 !important;
+}
+
+.copy{
+  height: 1em;
+  width: 1em;
+}
+
+.insidecode div pre {
+  background-color: #2c1f1c !important;
+  opacity: 1 !important;
+
+
+}
+
+
+
+.interpreter-copy .interpreter , .interpreter-copy .copy{
+  margin:  0 6px ;
+}
+
+.insidecode div pre{
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  padding: 15px;
+}
+
+strong{
+  font-weight: 900;
+  letter-spacing: 0.1px;
+  /* text-decoration: underline; */
+}
+
+.Uppertext a{
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.copy:active {
+  background-color: rgba(0, 0, 0, 0.5); /* Darker background color when the button is active (clicked) */
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8), /* Glowing effect with a cyan color */
+              0 0 20px rgba(0, 255, 255, 0.6),
+              0 0 30px rgba(0, 255, 255, 0.4),
+              0 0 40px rgba(0, 255, 255, 0.2); /* Multiple shadows to create a glowing effect */
+}
+
+.responseimg img{
+  height: 10em;
+
+}
+
+
+.image-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5px;
+}
+
+.image-options i {
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.image-options i:hover {
+  color: #666;
+}
+
+.responseimg {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 10px;
+  border: 1px solid #b9b2b2;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+}
+
+.responseimg .image-options .fa-expand{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.fullscreen {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 10px;
+  border: 1px solid #b9b2b2;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.responseimg img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.responseimg.fullscreen {
+  position: fixed;
+  width: 100vw;
+  z-index: 9999;
+  background: #21283a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.responseimg.fullscreen img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.responseimg.fullscreen .image-options {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9999;
+}
+
+.responseimg.fullscreen .image-options i {
+  font-size: 2em;
+}
+/* Style for image download and full screen buttons */
+.image-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.image-options i {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px;
+  color: #b01212;
+  transition: color 0.3s;
+}
+
+.image-options i:hover {
+  color: #ffffff;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  max-height: 100%;
+  z-index: 9999;
+  background-color: none;
+  /* padding: 20px; */
+
+}
+
+.fullscreen .image-options .fa-download{
+  position: fixed;
+  bottom: 0px;
+}
+
