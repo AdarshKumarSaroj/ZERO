@@ -25,56 +25,29 @@ let chatHistory = [
 ];
 
 
+let API = "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"
 
 
+async function respondToUser(prompt, temperature=0.9, max_new_tokens=5000, top_p=0.95, stream=false) {
+    chatHistory.push({ role: 'user', content: prompt });
+    console.log(chatHistory)
+    console.log(prompt)
 
-function formatPrompt(message, customInstructions=null){
-    let prompt = "";
-    if (customInstructions) {
-        prompt += `[INST] ${customInstructions} [/INST]`;
-    }
-    prompt += `[INST] ${message} [/INST]`;
-    return prompt;
-}
-
-function extractAnswer(response) {
-    let t = response.split("[/INST]");
-
-    if (t[t.length - 1].includes("user:") || t[t.length - 1].includes("assistant:") || t[t.length - 1].includes("system:")) {
-        let m = t[t.length - 1].replace("user:", " ");
-        m = m.replace("assistant:", " ");
-        m = m.replace("system:", " ");
-        return m.trim(); 
-    } else {
-        return t[t.length - 1].trim(); // Return the original value of t
-    }
-}
-
-async function respondToUser(prompt, temperature=0.9, max_new_tokens=5000, top_p=0.95, repetition_penalty=1.0) {
-
-
-
-    let generate_kwargs = {
-        temperature: temperature,
-        max_new_tokens: max_new_tokens,
-        top_p: top_p,
-        repetition_penalty: repetition_penalty,
-        do_sample: true,
-        seed: Math.floor(Math.random() * Math.pow(10, 7) + 1)
-    };
-
-
-    const url = 'https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1';
+    const url = 'https://api.groq.com/openai/v1/chat/completions';
     const headers = {
-        'Authorization': 'Bearer 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',
+        'Authorization': `Bearer ${API}`,
         'Content-Type': 'application/json'
     };
 
 
     const body = JSON.stringify({
-        "inputs": prompt,
-        "parameters": generate_kwargs
-      }
+        "model":"mixtral-8x7b-32768" ,
+        "messages": chatHistory,
+        "temperature": temperature,
+        "max_tokens": max_new_tokens,
+        "top_p": top_p,
+        "stream": stream
+    }
       );
 
 
@@ -87,11 +60,12 @@ async function respondToUser(prompt, temperature=0.9, max_new_tokens=5000, top_p
 
         if (response.ok) {
             const data = await response.json();
-            const generatedText = data[0].generated_text;
-            let cleanedResponse = extractAnswer(generatedText);
-            chatHistory.push({ role: 'assistant', content: cleanedResponse });
+            console.log(data)
+            const generatedText = data.choices[0].message.content;
+
+            chatHistory.push({ role: 'assistant', content: generatedText });
             updateChatBox();
-            console.log(generatedText);
+            console.log(generatedText); 
             scrollToBottom();
             return cleanedResponse
 
@@ -318,40 +292,22 @@ function sendMessage() {
         document.querySelector('.chatbox').appendChild(thinkingMessage);
         scrollToBottom();
 
-        // Translate the Hinglish message to English
-        translateToEnglish(userMessage).then((translatedMessage) => {
-            const customInstructions = chatHistory.map(msg => `${msg.role}: ${msg.content}`).join(", ");
-            const prompt = formatPrompt(translatedMessage, customInstructions);
-            chatHistory.push({ role: 'user', content: translatedMessage });
+        const MAX_MESSAGES = 100;
+        if (chatHistory.length > MAX_MESSAGES) {
+            const oldestMessage = chatHistory.shift();
+            // Remove the oldest message from the chatbox
+            const chatbox = document.querySelector('.chatbox');
+            chatbox.removeChild(chatbox.firstElementChild);
+        }
 
-            // Limit the number of messages stored in chatHistory
-            const MAX_MESSAGES = 100;
-            if (chatHistory.length > MAX_MESSAGES) {
-                const oldestMessage = chatHistory.shift();
-                // Remove the oldest message from the chatbox
-                const chatbox = document.querySelector('.chatbox');
-                chatbox.removeChild(chatbox.firstElementChild);
-            }
-
-            userInput.value = '';
-            respondToUser(prompt).then(() => {
-                // Re-enable the textarea after the result is shown
-                // Remove the "Thinking..." message
-                thinkingMessage.remove();
-                // Scroll to the bottom of the chatbox
-                scrollToBottom();
-            });
+        userInput.value = '';
+        respondToUser(userMessage).then(() => {
+            thinkingMessage.remove();
+            scrollToBottom();
         });
     }
 }
 
-
-
-async function translateToEnglish(text) {
-        const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=hi&tl=en&dt=t&q=${encodeURI(text)}`);
-        const data = await response.json();
-        return text;
-}
 
 document.addEventListener('DOMContentLoaded', function () {
     const userInput = document.getElementById('user-input');
